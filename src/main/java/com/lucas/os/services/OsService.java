@@ -12,8 +12,6 @@ import org.springframework.stereotype.Service;
 import com.lucas.os.domain.Cliente;
 import com.lucas.os.domain.OS;
 import com.lucas.os.domain.Tecnico;
-import com.lucas.os.domain.enuns.Prioridade;
-import com.lucas.os.domain.enuns.Status;
 import com.lucas.os.dtos.OSDTO;
 import com.lucas.os.repositories.OSRepository;
 import com.lucas.os.services.exceptions.ObjectNotFoundException;
@@ -54,8 +52,8 @@ public class OsService {
 		OS newObj = new OS();
 		newObj.setId(obj.getId());
 		newObj.setObservacoes(obj.getObservacoes());
-		newObj.setPrioridade(Prioridade.toEnum(obj.getPrioridade().getCod()));
-		newObj.setStatus(Status.toEnum(obj.getStatus().getCod()));
+		newObj.setPrioridade(obj.getPrioridade());
+		newObj.setStatus(obj.getStatus());
 		
 		Tecnico tec = tecnicoService.findById(obj.getTecnico());
 		Cliente cli = clienteService.findById(obj.getCliente());
